@@ -1,0 +1,38 @@
+#server.port: 9977
+demo.security.jwt:
+  tokenExpirationTime: 480 # Number of minutes
+#  tokenExpirationTime: 2 # Number of minutes
+  refreshTokenExpTime: 960 # Minutes
+  tokenIssuer: http://bim.ibm.com
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  
+spring.datasource:
+  driverClassName: org.h2.Driver
+  url: jdbc:h2:~/test
+  username: sa
+
+spring.jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+  show-sql: true
+spring.h2.console.enabled: true
+
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.properties.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+spring:
+  datasource:
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 50000
+    platform: H2
+  profiles:
+    active: default
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+server:
+ servlet:
+   context-path: /creditcards-info
+   port: 8080
+
+

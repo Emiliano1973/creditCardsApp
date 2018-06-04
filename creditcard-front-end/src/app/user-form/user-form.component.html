@@ -1,0 +1,45 @@
+<md-grid-list cols="8" rowHeight="100px">
+  <md-grid-tile [colspan]="8" [rowspan]="1"></md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="3"></md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="3">
+    <md-card>
+      <md-card-title>New User</md-card-title>
+      <form [formGroup]="userForm" (submit)="onSubmit($event)" >
+        <md-card-content>
+
+          <md-input-container>
+            <input mdInput
+                   placeholder="Credit card user"
+                   value="example@ie.emi.com"
+                   formControlName="email"
+                   type="email"
+                   required/>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Password"
+                   formControlName="password"
+                   type="password"
+                   required/>
+          </md-input-container>
+          <div class="errorMessage" *ngIf="hasError">{{errorMessage}}</div>
+        </md-card-content>
+        <md-card-actions>
+          <md-grid-list cols="3" rowHeight="75px">
+            <md-grid-tile [colspan]="1" [rowspan]="1"> <button md-raised-button color="warn" (click)="cancelClick(); $event.preventDefault()">
+              <md-icon>cancel</md-icon>
+            </button>
+            </md-grid-tile>
+            <md-grid-tile [colspan]="1" [rowspan]="1">
+              <button md-fab type="submit"><md-icon>check</md-icon></button>
+            </md-grid-tile>
+            <md-grid-tile [colspan]="1" [rowspan]="1">
+
+            </md-grid-tile>
+          </md-grid-list>
+        </md-card-actions>
+      </form>
+    </md-card>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="3"></md-grid-tile>
+  <md-grid-tile [colspan]="8" [rowspan]="1"></md-grid-tile>
+</md-grid-list>

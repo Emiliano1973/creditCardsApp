@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.forms {
+  width: 400px;
+}
+
+.mat-card-content.form-card {
+  display: flex;
+  flex-flow: column;
+}
+
+.form-error {
+  font-size: 75%;
+}
+
+.form-input {
+  width: 100%;
+  margin: 1em;
+
+}
+.mat-sidenav {
+  width: 250px;
+}
+
+.mat-card.filter {
+  width: 100%;
+}
+
+.md-small {
+  max-width: 15px;
+}
+
+.md-button.md-small {
+  min-width: 15px;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.card-title {
+  display: flex;
+  flex-flow: row;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.drag-src {
+  opacity: 0.4;
+}
+
+
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ce4233;
+  letter-spacing: 0.2em;
+}
+.loader::before, .loader::after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #ce4233;
+  position: absolute;
+  /*
+  -webkit-animation: load .7s infinite alternate ease-in-out;
+  animation: load .7s infinite alternate ease-in-out;
+*/
+}
+.loader::before {
+  top: 0;
+}
+.loader::after {
+  bottom: 0;
+}
+
+@-webkit-keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px;
+  }
+}
+
+@keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px;
+  }
+}

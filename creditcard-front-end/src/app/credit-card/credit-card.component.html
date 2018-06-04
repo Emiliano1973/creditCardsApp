@@ -1,0 +1,129 @@
+
+<md-card>
+
+  <md-card-title>
+    <div class="card-title">
+      <span>Credit cards list</span>
+      <span class="spacer"></span>
+      <button (click)="searchBox(searchBox1.value)" >search by card code</button>
+      <input placeholder="Search"
+             type="text"
+             #searchBox1
+             class="aligned-with-icon-relative"
+             style="margin-right: 2px;"/>
+      <a routerLink="/creditcards/new" md-raised-button color="accent">
+        <md-icon>person_add</md-icon>
+      </a>
+    </div>
+
+  </md-card-title>
+
+  <md-card-subtitle>
+  </md-card-subtitle>
+
+  <md-card-content>
+    <md-sidenav-container>
+
+
+      <div class="errorMessage" *ngIf="hasError">{{errorMessage}}</div>
+
+
+      <ngx-datatable style="min-height: 400px;"
+                     #table
+                     class="material fullscreen"
+                     [columnMode]="'force'"
+                     [rowHeight]="50"
+                     [headerHeight]="50"
+                     [footerHeight]="50"
+                     [rows]="creditCards"
+                     [loadingIndicator]="loading"
+                     >
+
+
+        <ngx-datatable-column name="cardCode"
+                              prop="cardCode" >
+          <ng-template let-column="column"  ngx-datatable-header-template>
+            <span>Card Code</span>
+          </ng-template>
+          <ng-template let-value="value"
+                       ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="name"
+                              prop="name">
+          <ng-template let-column="column"  ngx-datatable-header-template>
+            <span>Owner name</span>
+          </ng-template>
+
+          <ng-template let-value="value"
+                       ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="expiryMonth"
+                              prop="expiryMonth" [width]="79">
+
+          <ng-template let-column="column"
+                       ngx-datatable-header-template>
+            <span (click)="sort()">Expiry month</span>
+
+          </ng-template>
+
+          <ng-template let-value="value"
+                       ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="expiryYear"
+                              prop="expiryYear">
+
+          <ng-template let-column="column"
+
+                       ngx-datatable-header-template>
+            <span >Expiry year</span>
+
+          </ng-template>
+
+          <ng-template let-value="value"
+                       ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column name="actions"
+                              prop="id">
+
+          <ng-template let-column="column"
+                       ngx-datatable-header-template>
+            <span>Actions</span>
+          </ng-template>
+
+          <ng-template let-row="row"
+                       let-value="value"
+                       ngx-datatable-cell-template>
+            <button md-button color="primary"
+                    (click)="onEditClick(value)">
+              <md-icon class="md-small" >edit</md-icon>
+            </button>
+            <button md-button color="warn"
+                    (click)="onDeleteClick(value)">
+              <md-icon >clear</md-icon>
+            </button>
+          </ng-template>
+
+        </ngx-datatable-column>
+
+      </ngx-datatable>
+
+    </md-sidenav-container>
+  </md-card-content>
+</md-card>

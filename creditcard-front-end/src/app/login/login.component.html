@@ -1,0 +1,41 @@
+<md-grid-list cols="8" rowHeight="100px">
+  <md-grid-tile [colspan]="8" [rowspan]="1"></md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="3"></md-grid-tile>
+  <md-grid-tile [colspan]="4" [rowspan]="3">
+    <md-card>
+      <md-card-title>Login</md-card-title>
+      <form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
+        <md-card-content>
+
+          <md-input-container>
+            <input mdInput
+                   placeholder="User name"
+                   value="example@ie.ibm.com"
+                   formControlName="email"
+                   type="text"
+                   required/>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Password"
+                   formControlName="password"
+                   type="password"
+                   required/>
+          </md-input-container>
+          <div class="errorMessage" *ngIf="hasError">{{errorMessage}}</div>
+        </md-card-content>
+        <md-card-actions>
+          <md-grid-list cols="3" rowHeight="75px">
+            <md-grid-tile [colspan]="1" [rowspan]="1"></md-grid-tile>
+            <md-grid-tile [colspan]="1" [rowspan]="1">
+              <button md-fab type="submit"><md-icon>check</md-icon></button>
+            </md-grid-tile>
+            <md-grid-tile [colspan]="1" [rowspan]="1"></md-grid-tile>
+          </md-grid-list>
+        </md-card-actions>
+      </form>
+    </md-card>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="2" [rowspan]="3"></md-grid-tile>
+  <md-grid-tile [colspan]="8" [rowspan]="1"></md-grid-tile>
+</md-grid-list>
+

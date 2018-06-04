@@ -1,0 +1,97 @@
+
+<div *ngIf="initialized">
+  <md-grid-list cols="8" rowHeight="50px">
+    <md-grid-tile [colspan]="8" [rowspan]="1"></md-grid-tile>
+    <md-grid-tile [colspan]="2" [rowspan]="3"></md-grid-tile>
+
+    <md-grid-tile [colspan]="4" [rowspan]="11">
+
+      <md-card class="forms">
+        <md-card-title>{{title}} credit card</md-card-title>
+
+        <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit($event)">
+          <md-card-content class="form-card">
+            <md-input-container>
+              <input mdInput
+                     placeholder="Credit card"
+                     value="1234567891234567"
+                     formControlName="cardCode"
+                     type="text"
+                     required/>
+              <md-error *ngIf="creditCardForm.controls['cardCode'].hasError('required')">
+                This field is required
+              </md-error>
+             </md-input-container>
+
+
+            <md-input-container>
+              <input mdInput placeholder="Name"
+                     formControlName="name"
+                     type="text"/>
+            </md-input-container>
+
+
+            <div class="form-input">
+              <md-select placeholder="Expiry Month"
+                         formControlName="expiryMonth"
+                         style="width: 100%;">
+                <md-option *ngFor="let monthVar of monthsArr"
+                           [value]="monthVar">
+                  {{monthVar}}
+                </md-option>
+              </md-select>
+              <md-error
+                class="form-error"
+                *ngIf="creditCardForm.controls['expiryMonth'].hasError('required') && creditCardForm.controls['expiryMonth'].touched">
+                This field is required
+              </md-error>
+            </div>
+
+            <div class="form-input">
+              <md-select placeholder="Expiry Year"
+                         formControlName="expiryYear"
+                         style="width: 100%;">
+                <md-option *ngFor="let yearVar of yearsArr"
+                           [value]="yearVar">
+                  {{yearVar}}
+                </md-option>
+              </md-select>
+              <md-error
+                class="form-error"
+                *ngIf="creditCardForm.controls['expiryMonth'].hasError('required') && creditCardForm.controls['expiryMonth'].touched">
+                This field is required
+              </md-error>
+            </div>
+            <div class="errorMessage" *ngIf="hasError">{{errorMessage}}</div>
+
+          </md-card-content>
+
+
+          <md-card-actions>
+            <md-grid-list cols="3" rowHeight="75px">
+              <md-grid-tile [colspan]="1" [rowspan]="1">
+                <button md-raised-button color="warn" (click)="cancelClick(); $event.preventDefault()">
+                  <md-icon>cancel</md-icon>
+                </button>
+              </md-grid-tile>
+              <md-grid-tile [colspan]="1" [rowspan]="1"></md-grid-tile>
+              <md-grid-tile [colspan]="1" [rowspan]="1">
+                <button md-raised-button
+                        [disabled]="!creditCardForm.valid"
+                        color="accent"
+                        type="submit">
+                  <md-icon>check</md-icon>
+                </button>
+              </md-grid-tile>
+            </md-grid-list>
+          </md-card-actions>
+        </form>
+
+      </md-card>
+
+    </md-grid-tile>
+
+    <md-grid-tile [colspan]="2" [rowspan]="3"></md-grid-tile>
+    <md-grid-tile [colspan]="8" [rowspan]="1"></md-grid-tile>
+  </md-grid-list>
+</div>
